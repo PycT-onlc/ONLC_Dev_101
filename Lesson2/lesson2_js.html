@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>
+			ONLC.Dev 101 Lesson 2
+		</title>
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<script>
+
+			function get_obj(the_id)
+			{
+				return document.getElementById(the_id);
+			}
+
+			function make_red(the_id)
+			{
+				var tmp = get_obj(the_id);
+				tmp.style.color = "red";
+			}
+
+			function make_black(the_id)
+			{
+				var tmp = get_obj(the_id);
+				tmp.style.color = "black";
+			}
+
+			function switch_color(the_id)
+			{
+				var tmp = get_obj(the_id);
+				
+				if (tmp.style.color == "red")
+					{
+						make_black(the_id);
+					}
+				else
+					{
+						make_red(the_id);
+					}
+			}
+
+			var xxx = switch_color; // xxx теперь тождественнен функции switch_color - мы передали туда указатель на нашу функцию
+
+		</script>
+
+		<div id = "onlc1">
+			ONLINECONTRACT is the BEST!!!
+		</div>
+		<br>
+
+		<button id = "button1">Pew</button>
+
+		<script type="text/javascript">
+			var the_button = document.getElementById("button1");
+			the_button.onclick = function() 
+										{
+											switch_color("onlc1");
+										}
+		</script>
+
+	</body>
+</html>

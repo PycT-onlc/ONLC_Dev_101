@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<title>
+			ONLC.Dev 101 Lesson 2
+		</title>
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<script>
+			class Mammal
+			{
+				constructor(number_of_legs = 6)
+				{
+					this.number_of_legs = number_of_legs;
+					this.number_of_eyes = 2;
+					this.is_warm = true;
+				}
+
+				m_run()
+				{
+					document.write("I am runnig");
+				}
+
+				m_voice()
+				{
+
+				}
+			}
+
+			class Dog extends Mammal
+			{
+				constructor(name)
+				{
+					super(4);
+					this.name = name;
+				}
+
+				m_voice()
+				{
+					document.write("Bark!<br><br>");
+				}
+
+				m_guard(is_intruder_seen = false) //Private!
+				{
+					if is_intruder_seen
+					{
+						m_voice();
+						m_voice();
+						m_voice();
+						m_voice();
+					}
+				}
+
+			}
+
+			class Cat extends Dog
+			{
+				m_voice()
+				{
+					document.write("Meow!<br><br>");					
+				}
+			}
+
+			function new_line()
+			{
+				document.write("<br>");
+			}
+
+			function output(the_string)
+			{
+				document.write(the_string);
+				new_line();
+			}
+
+			var theDog = new Dog("FIDO");
+			var dog2 = new Dog("Bobik");
+			var dog3 = theDog;
+
+			var dog8 = new Dog("FIDO");
+
+
+			theDog.m_voice();
+
+			output(theDog.number_of_legs);
+
+			output(dog2.name);
+
+			output("<hr>");
+
+			output("dog3: " + dog3.name);
+
+			dog3.name = "Pew!";
+
+			output("theDog: " + theDog.name);
+
+			output("<hr>");
+
+			var a = 3;
+			var b = a;
+
+			output("b = " + b);
+
+			b = b + 2;
+
+			output("b = " + b);
+			output("a = " + a);
+
+		</script>
+	</body>
+</html>
