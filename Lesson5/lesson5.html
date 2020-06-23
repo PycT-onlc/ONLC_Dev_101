@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>
+			ONLC.Dev 101 Lesson 5
+		</title>
+		<style>
+			.timerDisplay
+			{
+				font-size: 32pt;
+				padding: 32px;
+			}
+
+		</style>
+		<script src = "lesson5.js">
+		</script>
+	</head>
+	<body>
+		<div align = "center">
+			<div id = "timerDisplayArea" class = "timerDisplay">
+				&nbsp;
+			</div>
+			<button id = "timerButton">Go!</button>
+		</div>		
+
+		<script type="text/javascript">
+			var theTimer;
+			theTimer = new MegaTimer();
+			theTimer.getButton("timerButton");
+			theTimer.getDisplayArea("timerDisplayArea");
+			theTimer.showTime();			
+		</script>
+	</body>
+</html>
