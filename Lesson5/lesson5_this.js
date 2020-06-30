@@ -2,7 +2,7 @@ class MegaTimer
 {
 	constructor(the_period = 30, ascend = true)
 	{
-		this.period = the_period;
+		this.period = 30;
 		this.ascend = ascend;
 
 		if (ascend)
@@ -15,7 +15,6 @@ class MegaTimer
 		}
 
 		this.pause = true;
-		this.finished = false;
 
 		var instance = this;
 
@@ -27,37 +26,27 @@ class MegaTimer
 		this.showTime();
 	}
 
-	buttonClick(instance)
-	{
-		if (!instance.pause)
-		{
-			instance.pause = true;
-			instance.button.innerHTML = "Go!";
-		}
-		else
-		{
-			if (instance.finished)
-			{
-				instance.finished = false;
-			}
-			
-			instance.pause = false;
-			instance.button.innerHTML = "Pause";
-			window.setTimeout( function()
-									{ 
-									instance.timerTick(instance);
-								}, 1000);
-		}
-
-	}
-
 	getButton(button_id)
 	{
 		this.button = document.getElementById(button_id);
 		var instance = this;
+		var timerTickCopy = this.timerTick;
 		this.button.onclick = function()
 								{
-									instance.buttonClick(instance);
+									console.log(instance.button);
+									if (!instance.pause)
+									{
+										instance.pause = true;
+										instance.button.innerHTML = "Go!";
+										console.log("1");
+									}
+									else
+									{
+										instance.pause = false;
+										instance.button.innerHTML = "Pause";
+										console.log("2");
+										window.setTimeout(timerTickCopy(), 1000);
+									}
 								}
 		console.log("onclick binded");
 		console.log(this.button);
@@ -67,7 +56,6 @@ class MegaTimer
 	{
 		this.pause = true;
 		this.button.innerHTML = "Go!";
-		this.finished = true;
 	}
 
 	showTime()
@@ -75,33 +63,32 @@ class MegaTimer
 		this.display_area.innerHTML = this.timer_value;
 	}
 
-	timerTick(instance)
+	timerTick()
 	{
-		if (!instance.pause)
+		console.log("Tick!");
+		console.log(instance.pause);
+		if (!this.pause)
 		{
-			if (instance.ascend)
+			if (this.ascend)
 			{
-				instance.timer_value++;
-				if (instance.timer_value == instance.period)
+				this.timer_value++;
+				if (this.timer_value == this.period)
 				{
-					instance.timer_value = 0;
-					instance.reinit();
+					this.timer_value = 0;
+					this.reinit();
 				}
 			}
 			else
 			{
-				instance.timer_value--;				
-				if (instance.timer_value == 0)
+				this.timer_value--;				
+				if (this.timer_value == 0)
 				{
-					instance.timer_value = instance.period;
-					instance.reinit();
+					this.timer_value = this.period;
+					this.reinit();
 				}
 			}
-			instance.showTime();
-			window.setTimeout( function()
-								{ 
-									instance.timerTick(instance);
-								}, 1000);
+			this.showTime();
+			window.setTimeout(this.timerTick, 1000);
 		}
 
 	}
@@ -113,6 +100,8 @@ function output(the_string)
 	var the_statusbar = document.getElementById("statusbar");
 	var tmp_content = the_statusbar.innerHTML;
 	the_statusbar.innerHTML = tmp_content + "<br>" + the_string;
+	// the_statusbar.innerHTML += "<br>" + the_string;
+
 }
 
 
