@@ -1,0 +1,13 @@
+{% set no_cache = '?nc=' + range(0, 100500)|random()|string() %}
+<html>
+    <head>
+    {% block head %}
+        <title>onlc dev 101</title>
+    {% endblock %}
+    </head>
+
+<body>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

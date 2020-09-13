@@ -1,0 +1,17 @@
+<html>
+{% extends "layout.html" %}
+{% block head %}
+{{ super() }}
+<!--
+    <script src = "{{url_for('static', filename = 'js/helen.js') + no_cache}}">
+<!---->
+{% endblock %}
+<body>
+    {% block body %}
+    {{ super() }}
+
+    <h1>pew!</h1>
+
+    {% endblock %}
+</body>
+</html>
