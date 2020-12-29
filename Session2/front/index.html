@@ -23,22 +23,47 @@
 			var employee_name = name_object.innerText;
 			var surname_object = employee_element.children[1];
 			var employee_surname = surname_object.innerText;
+			var edit_button_container = employee_element.children[2];
 
 			name_object.innerHTML = "<input type='text' value='" + employee_name + "'>";
 			surname_object.innerHTML = "<input type='text' value='" + employee_surname + "'>";
 
+			edit_button_container.innerHTML = "<button onclick=\"setViewMode('employee1');\">Save</button>";
+
 			return true;
 
 		}
+
+		function setViewMode(employee_id) {
+			var employee_element = document.getElementById(employee_id);
+			var name_object = employee_element.children[0];
+			var employee_name_input = name_object.children[0];
+			var employee_name = employee_name_input.value;
+			var surname_object = employee_element.children[1];
+			var employee_surname_input = surname_object.children[0];
+			var employee_surname = employee_surname_input.value;
+			var edit_button_container = employee_element.children[2];
+
+			name_object.innerHTML = employee_name;
+			surname_object.innerHTML = employee_surname;
+
+			edit_button_container.innerHTML = "<button onclick=\"setEditMode('employee1');\">Edit</button>";
+
+			return true;
+
+		}
+
 	</script>
 </head>
 <div class="maincontent">
-	<ol class="employees">
+	<ol class="employees" id="employees_all">
 		<li>
 			<div class="employee" id="employee1">
 				<div class="employee_name">Вася</div>
 				<div class="employee_name">Пупкин</div>
-				<button onClick="setEditMode('employee1');">edit</button>
+				<div class="employee_name">
+					<button onClick="setEditMode('employee1');" id="button_employee1">Edit</button>
+				</div>
 			</div>
 		</li>
 	</ol>
