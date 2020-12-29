@@ -28,7 +28,7 @@
 			name_object.innerHTML = "<input type='text' value='" + employee_name + "'>";
 			surname_object.innerHTML = "<input type='text' value='" + employee_surname + "'>";
 
-			edit_button_container.innerHTML = "<button onclick=\"setViewMode('employee1');\">Save</button>";
+			edit_button_container.innerHTML = "<button onclick=\"setViewMode('"+employee_id+"');\">Save</button>";
 
 			return true;
 
@@ -47,11 +47,12 @@
 			name_object.innerHTML = employee_name;
 			surname_object.innerHTML = employee_surname;
 
-			edit_button_container.innerHTML = "<button onclick=\"setEditMode('employee1');\">Edit</button>";
+			edit_button_container.innerHTML = "<button onclick=\"setEditMode('"+employee_id+"');\">Edit</button>";
 
 			return true;
 
 		}
+
 
 	</script>
 </head>
@@ -67,5 +68,7 @@
 			</div>
 		</li>
 	</ol>
+
+	<button onClick="addEmployee();">Add</button>
 </div>
 </html>
