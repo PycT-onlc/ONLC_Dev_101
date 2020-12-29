@@ -53,6 +53,36 @@
 
 		}
 
+		var last_id_number = 1;
+
+		function addEmployee(){
+
+			last_id_number++;
+			new_id_number = last_id_number;
+			var new_employee_id = "employee"+last_id_number; //employee2 
+
+			var list_object = document.getElementById("employees_all");
+			
+			var new_employee_html = "\
+				<div class='employee' id='"+new_employee_id+"'>\
+					<div class='employee_name'>\
+						<input type='text'>\
+					</div>\
+					<div class='employee_name'>\
+						<input type='text'>\
+					</div>\
+					<div class='employee_name'>\
+						<button onClick=\"setViewMode('"+new_employee_id+"')\">\
+							Save\
+						</button>\
+					</div>"
+
+			var new_employee_list_item = document.createElement('li');
+			new_employee_list_item.innerHTML = new_employee_html;
+
+			list_object.append(new_employee_list_item);
+
+		}
 
 	</script>
 </head>
