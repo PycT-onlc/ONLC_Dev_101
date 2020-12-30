@@ -94,6 +94,8 @@
 			sender.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 
+					console.log(this.responseText);
+
 					return this.responseText;
 
 				}
@@ -108,8 +110,8 @@
 	<ol class="employees" id="employees_all">
 		<li>
 			<div class="employee" id="employee1">
-				<div class="employee_name">Вася</div>
-				<div class="employee_name">Пупкин</div>
+				<div class="employee_name">Vasya</div>
+				<div class="employee_name">Pupkin</div>
 				<div class="employee_name">
 					<button onClick="setEditMode('employee1');" id="button_employee1">Edit</button>
 				</div>
@@ -118,6 +120,6 @@
 	</ol>
 
 	<button onClick="addEmployee();">Add</button>
-	<button onClick="console.log(sendPostData({'test':'hello'}));">Send</button>
+	<button onClick="sendPostData({'test':'hello'});">Send</button>
 </div>
 </html>
