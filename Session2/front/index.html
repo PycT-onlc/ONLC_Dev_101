@@ -84,6 +84,24 @@
 
 		}
 
+		function sendPostData(data){
+
+			var url = "http://dev101.onlc.market/back/";
+			var sender = new XMLHttpRequest();
+
+			sender.open("POST", url, true);
+
+			sender.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+
+					return this.responseText;
+
+				}
+			}
+
+			sender.send(data);
+		}
+
 	</script>
 </head>
 <div class="maincontent">
@@ -100,5 +118,6 @@
 	</ol>
 
 	<button onClick="addEmployee();">Add</button>
+	<button onClick="console.log(sendPostData({'test':'hello'}));">Send</button>
 </div>
 </html>
