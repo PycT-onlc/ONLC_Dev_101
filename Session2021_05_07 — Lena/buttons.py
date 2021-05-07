@@ -2,16 +2,22 @@ from flask import Flask, render_template, request;
 
 app = Flask(__name__);
 
-@app.route("/")
+@app.route("/", methods=["POST", "GET"])
 @app.route("/index")
 def index():
-    return render_template("index.html");
+	if request.method == "POST":
+		data = request.form #объект, формируемый фласком. 
+		print(data)
 
-    def main():
+	return render_template("index.html", data=data);
 
-    app.run(debug = False, host = "0.0.0.0", port = "5001");
+
+def main():
+
+    app.run(debug = True, host = "0.0.0.0", port = "5001");
 
     return True;
+
 
 if __name__ == "__main__":
     main();
